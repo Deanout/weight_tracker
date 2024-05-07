@@ -1,0 +1,40 @@
+<%= form_with(model: weight, class: "contents",
+  data: { 
+      controller: "weight-form", 
+      # Default weight unit
+      weight_form_default_unit_value: @default_unit
+      }
+  ) do |form| %>
+  <% if weight.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(weight.errors.count, "error") %> prohibited this weight from being saved:</h2>
+      <ul>
+        <% weight.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="my-5">
+    <%= form.label :value %>
+    <div class="flex items-center space-x-2">
+      <%= form.text_field :value, 
+        step: 0.01, 
+        placeholder: "Your weight...", 
+        data: { weight_form_target: "input" }, 
+        class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
+      <%= form.select :unit, 
+        options_for_select([['kg', 'kg'], ['lbs', 'lbs']], weight.unit), 
+        {},
+        data: { weight_form_target: "unit", action: "weight-form#convert" },
+        class: "block shadow rounded-md border border-gray-200 outline-none px-8 py-2 mt-2" %>
+    </div>
+  </div>
+  <div class="my-5">
+    <%= form.label :date %>
+    <%= form.date_field :date, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

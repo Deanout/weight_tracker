@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: 1.5
+  date: 2024-05-06
+  user: one
+  unit: MyString
+
+two:
+  value: 1.5
+  date: 2024-05-06
+  user: two
+  unit: MyString

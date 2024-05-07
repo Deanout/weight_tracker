@@ -1,0 +1,19 @@
+<div data-controller="weights" class="row mb-5 w-full">
+  <div class="row mb-5 w-full">
+    <h1 class="text-2xl font-medium">Weight Tracker</h1>
+  </div>
+  <div class="row">
+    <select data-action="change->weights#updateChart" class="rounded-lg py-3 px-8 bg-gray-100 inline-block font-medium cursor-pointer">
+      <option value="7_days" selected>Last 7 Days</option>
+      <option value="30_days">Last 30 Days</option>
+      <option value="90_days">Last 90 Days</option>
+      <option value="last_year">Last Year</option>
+      <option value="all_time">All Time</option>
+    </select>
+    <select data-action="change->weights#toggleUnit" class="rounded-lg py-3 px-8 bg-gray-100 inline-block font-medium cursor-pointer">
+      <option value="kg" <%= @default_unit.eql?('kg') ? 'selected' : '' %>>Kg</option>
+      <option value="lbs" <%= @default_unit.eql?('lbs') ? 'selected' : '' %>>Lbs</option>
+    </select>
+  </div>
+  <div id="chart"></div>
+</div>

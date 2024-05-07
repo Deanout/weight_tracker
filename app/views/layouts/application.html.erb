@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Video</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <div class="header bg-blue-600 text-white py-5 px-5 flex">
+      <h1 class="text-2xl font-medium">Demo</h1>
+      <div class="mr-auto ml-5 flex items-center space-x-5">
+        <a href="<%= root_path %>" class="text-white font-medium">Home</a>
+        <a href="<%= weights_path %>" class="text-white font-medium">Weights</a>
+        <a href="<%= new_weight_path %>" class="text-white font-medium">New Weight</a>
+      </div>
+      <div class="ml-auto">
+        <% if current_user %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "text-white font-medium" %>
+        <% else %>
+          <a href="<%= new_user_session_path %>" class="text-white font-medium">Sign in</a>
+          <a href="<%= new_user_registration_path %>" class="text-white font-medium">Sign up</a>
+        <% end %>
+      </div>
+    </div>
+    <main class="container mx-auto mt-28 px-5 flex">
+      <%= yield %>
+    </main>
+  </body>
+</html>

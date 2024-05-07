@@ -1,0 +1,14 @@
+<div id="<%= dom_id weight %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Weight:</strong>
+    <%= weight.preferred_value(@default_unit).truncate(2) %> <%= @default_unit %>
+  </p>
+  <p class="my-5">
+    <em><%= weight.date %></em>
+  </p>
+  <% if action_name != "show" %>
+    <%= link_to "Show this weight", weight, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this weight", edit_weight_path(weight), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

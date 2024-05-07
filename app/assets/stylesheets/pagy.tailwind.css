@@ -1,0 +1,22 @@
+.pagy {
+  @apply flex space-x-1 font-semibold text-sm text-gray-500;
+}
+
+.pagy a {
+  @apply block rounded-lg px-3 py-1 bg-gray-200 text-gray-600;
+  /* Default styles */
+}
+
+.pagy a:hover {
+  @apply bg-gray-300;
+}
+
+.pagy a.current {
+  @apply text-white bg-gray-400;
+  /* Current page styles */
+}
+
+.pagy a:not([href]) {
+  @apply text-gray-300 bg-gray-100 cursor-default;
+  /* Disabled link styles */
+}
